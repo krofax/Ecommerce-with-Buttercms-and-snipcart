@@ -1,0 +1,19 @@
+[
+
+  {
+    "name": "fullsnack shirt",
+    "price": "9800",
+    "id": "shirt-001",
+    "description": "Customized fullsnack white polo"
+
+  },
+
+  {
+    "name": "Just do it shirt",
+    "price": "300",
+    "id": "shirt-002",
+    "description": "Round neck black body hug shirt"
+
+  }
+
+]
