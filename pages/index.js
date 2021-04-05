@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import Post from "../components/post";
-import products from '../products.json'
 export default function Home() {
   const [posts, setPosts] = useState([]);
   useEffect(() => {
