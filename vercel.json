@@ -1,0 +1,7 @@
+{
+  "build": {
+    "env": {
+      "BUTTER_API_TOKEN": "49df4cb95fdc01c0ed5df1118c2d0d7be27169d1"
+    }
+  }
+}
