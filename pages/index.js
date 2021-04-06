@@ -1,14 +1,13 @@
 import { useEffect, useState } from "react";
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
-import Post from "../components/post";
+
 export default function Home() {
   const [posts, setPosts] = useState([]);
   useEffect(() => {
     async function getPosts() {
-      const res = await fetch(
-        `https://api.buttercms.com/v2/content/products/?auth_token=${process.env.API_TOKEN}`
-      );
+      const url = `https://api.buttercms.com/v2/content/products/?auth_token=${process.env.API_TOKEN}`;
+      const res = await fetch(url);
       const { data } = await res.json();
       const allProducts = data.products;
       setPosts([...allProducts]);
@@ -41,18 +40,34 @@ export default function Home() {
         <div className={styles.grid}>
           {posts.length > 0
             ? posts.map((p) => {
-              return (
-                <Post
-                  alt={p.alt}
-                  image={p.image}
-                  description={p.description}
-                  name={p.name}
-                  price={p.price}
-                />
-              )
-            })
-            : null}
-                 
+                return (
+                  <div key={p.id} className={styles.card}>
+                    <img
+                      style={{ "max-width": "100%" }}
+                      src={p.image}
+                      alt={`Preview of ${p.name}`}
+                    />
+                    <h3>{p.name}</h3>
+                    <p>{p.description}</p>
+                    <p>${p.price}</p>
+                    <p>
+                      <button
+                        className="snipcart-add-item"
+                        data-item-id={p.id}
+                        data-item-image={p.image}
+                        data-item-name={p.name}
+                        data-item-url="/"
+                        data-item-price={p.price}
+                      >
+                        Add to Cart
+                      </button>
+                      {/* <h1>{posts}</h1> */}
+                    </p>
+                  </div>
+                );
+              })
+            : "NOTHING WAS FOUND!!!"}
+          
         </div>
       </main>
 
